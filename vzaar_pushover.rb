@@ -84,7 +84,7 @@ class VzaarPushover < Sinatra::Base
     #
     #mail.deliver
     client = Rushover::Client.new('qs9jDTdWKjscFDAe5CdapqYA3aC4qn')
-    resp = client.notify('FSeCL0E2ZAQ3XGMMINEfHNncFYBMlP', "Your video uploaded to vzaar!", :priority => 1, :title => "Guess what?")
+    resp = client.notify('FSeCL0E2ZAQ3XGMMINEfHNncFYBMlP', "Your video uploaded to vzaar! #{request.POST.inspect}", :priority => 1, :title => "Guess what?")
     resp.ok? # => true
   end
   
