@@ -66,7 +66,7 @@ class VzaarPushover < Sinatra::Base
   post '/upload?' do
     @this = "Upload"
     vzaar_upload = v.upload_video(params[:content]['file'][:tempfile], "api test #{Time.now} - #{params[:content]['file'][:filename]}")
-    @result = vzaar_upload.body
+    @result = vzaar_upload.inspect
     slim :upload
   end
   
