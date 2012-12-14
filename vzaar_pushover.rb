@@ -109,3 +109,4 @@ class VzaarPushover < Sinatra::Base
     request.secure?           # false
     request.env               # raw env hash handed in by Rack
   end
+end
