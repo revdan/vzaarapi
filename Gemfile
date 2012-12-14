@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 gem "sinatra", :require => "sinatra/base"
-gem "vzaar", :path => "/Users/Dan/.rvm/gems/ruby-1.9.3-p0/gems/vzaar-0.2.3/lib/vzaar/base.rb"
+gem "vzaar",:git => "https://github.com/revdan/vzaar.git"
 gem "slim"
 gem "oauth"
 gem "httpclient"

@@ -1,7 +1,17 @@
+GIT
+  remote: https://github.com/revdan/vzaar.git
+  revision: b371619d9b23cf7d3a9f1c2f7b6c96ad369cd0ee
+  specs:
+    vzaar (0.2.6)
+      httpclient
+      nokogiri
+      oauth (= 0.3.6)
+
 GEM
   remote: https://rubygems.org/
   specs:
     httpclient (2.3.0.1)
+    nokogiri (1.5.5)
     oauth (0.3.6)
       ruby-hmac (>= 0.3.1)
     rack (1.4.1)
@@ -17,9 +27,6 @@ GEM
       tilt (~> 1.3.3)
     temple (0.5.5)
     tilt (1.3.3)
-    vzaar (0.2.3)
-      httpclient (>= 2.1.5)
-      oauth (= 0.3.6)
 
 PLATFORMS
   ruby
@@ -29,4 +36,4 @@ DEPENDENCIES
   oauth
   sinatra
   slim
-  vzaar
+  vzaar!
