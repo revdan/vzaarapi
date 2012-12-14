@@ -76,15 +76,15 @@ class VzaarPushover < Sinatra::Base
   end
   
   post '/thelisteningtree?' do
-    listening = request.env["rack.input"].read
-    xmldoc = Nokogiri::XML(listening)
-    state = xmldoc.xpath("//state").text
-    if state == "ready"
-      result = "succeeded, motherfucker!"
+    theresultsowl = request.env["rack.input"].read
+    xmldoc = Nokogiri::XML(ltheresultsowl)
+    theuploadstatetiger = xmldoc.xpath("//state").text
+    if theuploadstatetiger == "ready"
+      theresultbaboon = "succeeded, motherfucker!"
     else
-      result = "failed, jive turkey!"
+      theresultbaboon = "failed, jive turkey!"
     end
-    resp = client.notify('FSeCL0E2ZAQ3XGMMINEfHNncFYBMlP', "Your video upload #{result}", :priority => 1, :title => "Guess what?")
+    resp = client.notify('FSeCL0E2ZAQ3XGMMINEfHNncFYBMlP', "Your video upload #{theresultbaboon}", :priority => 1, :title => "Guess what?")
     resp.ok? # => true
   end
   
