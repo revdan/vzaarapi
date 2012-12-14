@@ -72,12 +72,15 @@ class VzaarPushover < Sinatra::Base
   end
   
   post '/thelisteningtree?' do
-    @xmldoc = Nokogiri::XML(request.POST.last)
-    puts @xmldoc
-    @state = @xmldoc.xpath("//state")
-    puts @state
-    resp = client.notify('FSeCL0E2ZAQ3XGMMINEfHNncFYBMlP', "Your video uploaded to vzaar! #{request.POST.inspect}", :priority => 1, :title => "Guess what?")
-    resp.ok? # => true
+    request.POST.each_with_index do |k, v|
+      puts "k: #{k}, v: #{v}"
+    end
+   #@xmldoc = Nokogiri::XML(request.POST.last)
+   #puts @xmldoc
+   #@state = @xmldoc.xpath("//state")
+   #puts @state
+   #resp = client.notify('FSeCL0E2ZAQ3XGMMINEfHNncFYBMlP', "Your video uploaded to vzaar! #{request.POST.inspect}", :priority => 1, :title => "Guess what?")
+   #resp.ok? # => true
   end
   
   get '/thelisteningtree?' do
