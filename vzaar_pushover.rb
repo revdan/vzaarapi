@@ -13,6 +13,9 @@ class VzaarPushover < Sinatra::Base
     end
   end
   
+  DOMAIN = "http://localhost:9292/"
+  DOMAIN = "ancient-earth-6665.herokuapp.com" if production?
+  
   v = VzaarInit.new
   
   get '/' do
