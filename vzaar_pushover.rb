@@ -70,4 +70,18 @@ class VzaarPushover < Sinatra::Base
     slim :upload
   end
   
+  post '/thelisteningtree' do
+    #content_type :json 
+    #{}"#{params}" 
+    mail = Mail.new do
+      from     'dan@vzaar.com'
+      to       'dan@vzaar.com'
+      subject  'Video Uploaded!'
+      body     "#{params}"
+    end
+
+    mail.delivery_method :sendmail
+
+    mail.deliver
+  end
 end
