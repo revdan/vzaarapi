@@ -72,6 +72,10 @@ class VzaarPushover < Sinatra::Base
   end
   
   post '/thelisteningtree?' do
+    @xmldoc = Nokogiri::XML(request.POST)
+    puts @xmldoc
+    @state = @xmldoc.xpath("//state")
+    puts @state
     resp = client.notify('FSeCL0E2ZAQ3XGMMINEfHNncFYBMlP', "Your video uploaded to vzaar! #{request.POST.inspect}", :priority => 1, :title => "Guess what?")
     resp.ok? # => true
   end
@@ -79,8 +83,9 @@ class VzaarPushover < Sinatra::Base
   get '/thelisteningtree?' do
     #filename = "//#{DOMAIN}/test.xml"
     #file_content = File.read(filename)
-    xmldoc = Nokogiri::XML("//#{DOMAIN}/test.xml")
-    puts xmldoc
+    @xmldoc = Nokogiri::XML('{"<?xml version"=>"\"1.0\" encoding=\"UTF-8\"?>\n<vzaar-api>\n  <video>\n    <title>api test 2012-12-14 17:14:59  0000 - mythtvexample.nuv</title>\n    <description nil=\"true\"></description>\n    <state>ready</state>\n    <url>http://vzaar.com/videos/1137850</url>\n    <id>1137850</id>\n  </video>\n</vzaar-api>\n"}')
+    @state = @xmldoc.xpath("//state")
+    slim :the_listening_tree
   end
   
   def dump
