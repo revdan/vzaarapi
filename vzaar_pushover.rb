@@ -76,10 +76,7 @@ class VzaarPushover < Sinatra::Base
   end
   
   post '/thelisteningtree?' do
-    logger.info request.POST
-    request.POST.each do |k|   
-      puts k
-    end
+    puts request.env["rack.input"].read
    #request.POST.each_pair do |k, v|
    ##  puts k.inspect
    #  puts v.inspect
