@@ -83,9 +83,7 @@ class VzaarPushover < Sinatra::Base
       subject  'Uploaded video status'
       body     @msg
     end
-
-    mail.delivery_method :sendmail
-
+    
     mail.deliver
                 
    #request.POST.each_pair do |k, v|
