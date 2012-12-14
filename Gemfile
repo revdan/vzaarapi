@@ -5,4 +5,5 @@ gem "slim"
 gem "oauth"
 gem "httpclient"
 gem "rushover"
-gem "mail"
+gem "nokogiri"
+gem'open-uri'

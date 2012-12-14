@@ -17,6 +17,7 @@ class VzaarPushover < Sinatra::Base
   DOMAIN = "ancient-earth-6665.herokuapp.com" if production?
   
   v = VzaarInit.new
+  client = Rushover::Client.new('qs9jDTdWKjscFDAe5CdapqYA3aC4qn')
   
   get '/' do
     @this = "Home"
@@ -71,20 +72,9 @@ class VzaarPushover < Sinatra::Base
   end
   
   post '/thelisteningtree?' do
-    #content_type :json 
-    #{}"#{params}" 
-    #mail = Mail.new do
-    #  from     'dan@vzaar.com'
-    #  to       'dan@vzaar.com'
-    #  subject  'Video Uploaded!'
-    #  body     "uploaded"
-    #end
-    #
-    #mail.delivery_method :sendmail
-    #
-    #mail.deliver
-    client = Rushover::Client.new('qs9jDTdWKjscFDAe5CdapqYA3aC4qn')
-    resp = client.notify('FSeCL0E2ZAQ3XGMMINEfHNncFYBMlP', "Your video uploaded to vzaar! #{request.POST.inspect}", :priority => 1, :title => "Guess what?")
+    whisper = Nokogiri::XML(request.POST)
+    
+    resp = client.notify('FSeCL0E2ZAQ3XGMMINEfHNncFYBMlP', "Your video uploaded to vzaar! #{whisper}", :priority => 1, :title => "Guess what?")
     resp.ok? # => true
   end
   
