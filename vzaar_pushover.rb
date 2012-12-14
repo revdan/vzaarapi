@@ -77,7 +77,7 @@ class VzaarPushover < Sinatra::Base
       from     'dan@vzaar.com'
       to       'dan@vzaar.com'
       subject  'Video Uploaded!'
-      body     "#{request.env}"
+      body     "uploaded"
     end
 
     mail.delivery_method :sendmail
