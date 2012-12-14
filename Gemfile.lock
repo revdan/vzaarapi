@@ -22,8 +22,6 @@ GEM
     oauth (0.3.6)
       ruby-hmac (>= 0.3.1)
     polyglot (0.3.3)
-    pony (1.4)
-      mail (> 2.0)
     rack (1.4.1)
     rack-protection (1.3.2)
       rack
@@ -51,9 +49,9 @@ PLATFORMS
 
 DEPENDENCIES
   httpclient
+  mail
   nokogiri
   oauth
-  pony
   rushover
   sinatra
   slim
