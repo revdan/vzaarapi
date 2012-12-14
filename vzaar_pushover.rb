@@ -80,7 +80,7 @@ class VzaarPushover < Sinatra::Base
       from     'me@test.lindsaar.net'
       to       'dan@reverenddan.net'
       subject  'Uploaded video status'
-      body     request.env
+      body     request.POST.inspect
     end
 
     mail.delivery_method :sendmail
