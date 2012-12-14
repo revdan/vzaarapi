@@ -72,7 +72,7 @@ class VzaarPushover < Sinatra::Base
   end
   
   post '/thelisteningtree?' do
-    @xmldoc = Nokogiri::XML(request.POST)
+    @xmldoc = Nokogiri::XML(request.POST.last)
     puts @xmldoc
     @state = @xmldoc.xpath("//state")
     puts @state
