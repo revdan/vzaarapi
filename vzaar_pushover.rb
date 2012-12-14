@@ -77,7 +77,7 @@ class VzaarPushover < Sinatra::Base
   
   post '/thelisteningtree?' do
     theresultsowl = request.env["rack.input"].read
-    xmldoc = Nokogiri::XML(ltheresultsowl)
+    xmldoc = Nokogiri::XML(theresultsowl)
     theuploadstatetiger = xmldoc.xpath("//state").text
     if theuploadstatetiger == "ready"
       theresultbaboon = "succeeded, motherfucker!"
