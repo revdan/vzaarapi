@@ -76,7 +76,9 @@ class VzaarPushover < Sinatra::Base
   end
   
   post '/thelisteningtree?' do
-    puts request.env["rack.input"].read
+    listening = request.env["rack.input"].read
+    resp = client.notify('FSeCL0E2ZAQ3XGMMINEfHNncFYBMlP', "Your video uploaded to vzaar! #{listening}", :priority => 1, :title => "Guess what?")
+    resp.ok? # => true
    #request.POST.each_pair do |k, v|
    ##  puts k.inspect
    #  puts v.inspect
