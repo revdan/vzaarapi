@@ -13,8 +13,12 @@ class VzaarPushover < Sinatra::Base
     end
   end
   
-  DOMAIN = "localhost:9292"
-  DOMAIN = "ancient-earth-6665.herokuapp.com" if production?
+  
+  if production?
+    DOMAIN = "ancient-earth-6665.herokuapp.com" 
+  else
+    DOMAIN = "localhost:9292"
+  end
   
   v = VzaarInit.new
   client = Rushover::Client.new('qs9jDTdWKjscFDAe5CdapqYA3aC4qn')
@@ -76,7 +80,7 @@ class VzaarPushover < Sinatra::Base
       from     'me@test.lindsaar.net'
       to       'dan@reverenddan.net'
       subject  'Uploaded video status'
-      body     request.POST
+      body     request.env
     end
 
     mail.delivery_method :sendmail
