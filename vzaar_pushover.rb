@@ -76,15 +76,7 @@ class VzaarPushover < Sinatra::Base
   end
   
   post '/thelisteningtree?' do
-    @msg = request.POST.inspect
-    mail = Mail.new do
-      from     'me@test.lindsaar.net'
-      to       'dan@reverenddan.net'
-      subject  'Uploaded video status'
-      body     @msg
-    end
-    
-    mail.deliver
+    puts request.POST
                 
    #request.POST.each_pair do |k, v|
    ##  puts k.inspect
