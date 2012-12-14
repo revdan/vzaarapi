@@ -73,7 +73,8 @@ class VzaarPushover < Sinatra::Base
   
   post '/thelisteningtree?' do
     request.POST.each_with_index do |k, v|
-      puts "k: #{k}, v: #{v}"
+      puts k.inspect
+      puts v.inspect
     end
    #@xmldoc = Nokogiri::XML(request.POST.last)
    #puts @xmldoc
