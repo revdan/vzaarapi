@@ -77,7 +77,11 @@ class VzaarPushover < Sinatra::Base
   
   post '/thelisteningtree?' do
     listening = request.env["rack.input"].read
-    resp = client.notify('FSeCL0E2ZAQ3XGMMINEfHNncFYBMlP', "Your video uploaded to vzaar! #{listening}", :priority => 1, :title => "Guess what?")
+    @xmldoc = Nokogiri::XML(listening)
+    puts @xmldoc
+    @state = @xmldoc.xpath("//state")
+    puts @state
+    resp = client.notify('FSeCL0E2ZAQ3XGMMINEfHNncFYBMlP', "Your video uploaded to vzaar! #{@state}", :priority => 1, :title => "Guess what?")
     resp.ok? # => true
    #request.POST.each_pair do |k, v|
    ##  puts k.inspect
