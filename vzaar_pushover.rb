@@ -70,7 +70,7 @@ class VzaarPushover < Sinatra::Base
     slim :upload
   end
   
-  post '/thelisteningtree' do
+  post '/thelisteningtree?' do
     #content_type :json 
     #{}"#{params}" 
     #mail = Mail.new do
