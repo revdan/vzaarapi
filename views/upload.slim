@@ -1,8 +1,7 @@
 form accept-charset="utf-8" action="/upload" enctype="multipart/form-data" method="post"
-  label for="content_file"
-    video
+  label for="content_file" class="btn btn-success" Click to choose video
   input#content_file name="content[file]" type="file"
-  button type="submit" upload
+  button class="btn btn-inverse" type="submit" upload
 	
 - if @result
 	p #{@result}

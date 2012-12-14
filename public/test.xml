@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-16"?>
+<resources applicationName="Testapp" author="Joe Bloggs">
+  <resource type="assembly" name="reader.dll" version="1.0.0.1"/>  
+  <resource type="sql" name="script.sql" version="1.0.0.0"/>
+  <resource type="file" name="text.txt" version="2.0.0.3"/>
+  <resource type="assembly" name="writer.dll" version="1.12.0.765"/>
+</resources>

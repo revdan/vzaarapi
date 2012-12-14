@@ -13,7 +13,7 @@ class VzaarPushover < Sinatra::Base
     end
   end
   
-  DOMAIN = "http://localhost:9292/"
+  DOMAIN = "localhost:9292"
   DOMAIN = "ancient-earth-6665.herokuapp.com" if production?
   
   v = VzaarInit.new
@@ -72,10 +72,15 @@ class VzaarPushover < Sinatra::Base
   end
   
   post '/thelisteningtree?' do
-    whisper = Nokogiri::XML(request.POST)
-    
-    resp = client.notify('FSeCL0E2ZAQ3XGMMINEfHNncFYBMlP', "Your video uploaded to vzaar! #{whisper}", :priority => 1, :title => "Guess what?")
+    resp = client.notify('FSeCL0E2ZAQ3XGMMINEfHNncFYBMlP', "Your video uploaded to vzaar! #{request.POST.inspect}", :priority => 1, :title => "Guess what?")
     resp.ok? # => true
+  end
+  
+  get '/thelisteningtree?' do
+    #filename = "//#{DOMAIN}/test.xml"
+    #file_content = File.read(filename)
+    xmldoc = Nokogiri::XML("//#{DOMAIN}/test.xml")
+    puts xmldoc
   end
   
   def dump
