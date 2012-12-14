@@ -79,7 +79,7 @@ class VzaarPushover < Sinatra::Base
     listening = request.env["rack.input"].read
     @xmldoc = Nokogiri::XML(listening)
     puts @xmldoc
-    @state = @xmldoc.xpath("//state")
+    @state = @xmldoc.xpath("//state").text
     puts @state
     resp = client.notify('FSeCL0E2ZAQ3XGMMINEfHNncFYBMlP', "Your video uploaded to vzaar! #{@state}", :priority => 1, :title => "Guess what?")
     resp.ok? # => true
