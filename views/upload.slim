@@ -1,0 +1,8 @@
+form accept-charset="utf-8" action="/upload" enctype="multipart/form-data" method="post"
+  label for="content_file"
+    video
+  input#content_file name="content[file]" type="file"
+  button type="submit" upload
+	
+- if @result
+	p #{@result}

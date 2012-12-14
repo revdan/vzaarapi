@@ -1,0 +1,15 @@
+h2 Videos
+
+ul
+	- @videos.each do |v|
+  	li #{v.title}
+
+p 
+	- if @prev > 0
+		span 
+			a href="#{@prev}" <<
+	span &nbsp;#{@page} of #{@max}&nbsp;
+	
+	- unless @page >= @max
+		span 
+			a href="#{@next}" >>
