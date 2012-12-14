@@ -72,10 +72,16 @@ class VzaarPushover < Sinatra::Base
   end
   
   post '/thelisteningtree?' do
-    Pony.mail :to => "dan@reverenddan.net",
-                :from => "me@example.com",
-                :subject => "Upload Message",
-                :body => request.POST
+    mail = Mail.new do
+      from     'me@test.lindsaar.net'
+      to       'dan@reverenddan.net'
+      subject  'Uploaded video status'
+      body     request.POST
+    end
+
+    mail.delivery_method :sendmail
+
+    mail.deliver
                 
    #request.POST.each_pair do |k, v|
    ##  puts k.inspect
