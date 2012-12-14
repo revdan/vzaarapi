@@ -73,16 +73,19 @@ class VzaarPushover < Sinatra::Base
   post '/thelisteningtree' do
     #content_type :json 
     #{}"#{params}" 
-    mail = Mail.new do
-      from     'dan@vzaar.com'
-      to       'dan@vzaar.com'
-      subject  'Video Uploaded!'
-      body     "uploaded"
-    end
-
-    mail.delivery_method :sendmail
-
-    mail.deliver
+    #mail = Mail.new do
+    #  from     'dan@vzaar.com'
+    #  to       'dan@vzaar.com'
+    #  subject  'Video Uploaded!'
+    #  body     "uploaded"
+    #end
+    #
+    #mail.delivery_method :sendmail
+    #
+    #mail.deliver
+    client = Rushover::Client.new('qs9jDTdWKjscFDAe5CdapqYA3aC4qn')
+    resp = client.notify('FSeCL0E2ZAQ3XGMMINEfHNncFYBMlP', "Your video uploaded to vzaar!", :priority => 1, :title => "Guess what?")
+    resp.ok? # => true
   end
   
   def dump
