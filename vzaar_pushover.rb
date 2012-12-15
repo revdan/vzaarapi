@@ -15,7 +15,7 @@ class VzaarPushover < Sinatra::Base
     end
   end
   
-  DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/videos.db")
+  DataMapper.setup(:default, ENV['HEROKU_POSTGRESQL_RED_URL'] || "sqlite3://#{Dir.pwd}/videos.db")
   class Video
     include DataMapper::Resource
     property :id, Serial
