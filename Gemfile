@@ -7,11 +7,17 @@ gem "httpclient"
 gem "rushover"
 gem "nokogiri"
 gem "newrelic_rpm"
-gem "sqlite3"
 gem "datamapper"
 gem "dm-sqlite-adapter"
 gem "sinatra-flash"
 gem "sinatra-redirect-with-flash"
 gem "builder"
 gem "dm-postgres-adapter"
-gem "pg"
+
+group :development, :test do
+  gem "sqlite3"
+end
+
+group :production do
+  gem "pg"
+end
