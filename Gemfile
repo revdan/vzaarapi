@@ -8,7 +8,6 @@ gem "rushover"
 gem "nokogiri"
 gem "newrelic_rpm"
 gem "datamapper"
-gem "dm-sqlite-adapter"
 gem "sinatra-flash"
 gem "sinatra-redirect-with-flash"
 gem "builder"
@@ -16,6 +15,7 @@ gem "dm-postgres-adapter"
 
 group :development, :test do
   gem "sqlite3"
+  gem "dm-sqlite-adapter"
 end
 
 group :production do
