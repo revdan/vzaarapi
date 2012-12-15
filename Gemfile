@@ -7,6 +7,6 @@ gem "httpclient"
 gem "rushover"
 gem "nokogiri"
 gem "newrelic_rpm"
-gem "mongoid"
+gem "mongoid", "~> 2.0"
 gem 'bson_ext'
 gem 'activesupport'
