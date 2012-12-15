@@ -56,7 +56,6 @@ PLATFORMS
 
 DEPENDENCIES
   httpclient
-  justonedb
   newrelic_rpm
   nokogiri
   oauth
