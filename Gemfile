@@ -8,3 +8,5 @@ gem "rushover"
 gem "nokogiri"
 gem "newrelic_rpm"
 gem "mongoid"
+gem 'bson_ext'
+gem 'activesupport'
