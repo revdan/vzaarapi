@@ -21,9 +21,7 @@ class VzaarPushover < Sinatra::Base
   else
     DOMAIN = "localhost:9292"
   end
-  
-  Mongoid.load!("./mongoid.yml", :production)
-  
+    
   v = VzaarInit.new
   client = Rushover::Client.new('qs9jDTdWKjscFDAe5CdapqYA3aC4qn')
   
