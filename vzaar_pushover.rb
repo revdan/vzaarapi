@@ -85,8 +85,10 @@ class VzaarPushover < Sinatra::Base
     
     if the_upload_state_ostrich == "ready"
       the_results_baboon = "succeeded, motherfucker!"
+      return "success"
     else
       the_results_baboon = "failed, jive turkey!"
+      return "failure"
     end
     
     the_delivery_narwhal = client.notify('FSeCL0E2ZAQ3XGMMINEfHNncFYBMlP', "Your video upload #{the_results_baboon}", :priority => 1, :title => "Guess what?")
