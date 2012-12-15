@@ -78,8 +78,9 @@ class VzaarPushover < Sinatra::Base
   end
   
   post '/thelisteningtree?' do
+    
     the_inquisitive_owl = request.env["rack.input"].read
-    the_xml_pony = Nokogiri::XML(the_inquisitve_owl)
+    the_xml_pony = Nokogiri::XML(the_inquisitive_owl)      
     the_upload_state_ostrich = the_xml_pony.xpath("//state").text
     
     if the_upload_state_ostrich == "ready"
