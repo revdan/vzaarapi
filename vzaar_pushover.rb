@@ -15,6 +15,17 @@ class VzaarPushover < Sinatra::Base
     end
   end
   
+  DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/recall.db")
+  class Video
+    include DataMapper::Resource
+    property :id, Serial
+    property :vzaar_id, Text, :required => true
+    property :complete, Boolean, :required => true, :default => false
+    property :created_at, DateTime
+    property :updated_at, DateTime
+  end
+  DataMapper.finalize.auto_upgrade!
+  
   # config 
   if production?
     DOMAIN = "powerful-crag-3167.herokuapp.com" 
@@ -30,6 +41,11 @@ class VzaarPushover < Sinatra::Base
     @video_count = v.user_details(v.login, true).video_count
     @all = v.user_details(v.login, true)
     slim :index
+  end
+  
+  get '/db?' do
+    @videos = Video.all :.order => :id.desc 
+    erb :db
   end
   
   get '/videos/*?' do
@@ -85,10 +101,10 @@ class VzaarPushover < Sinatra::Base
     
     if the_upload_state_ostrich == "ready"
       the_results_baboon = "succeeded, motherfucker!"
-      return "success"
+      puts "success"
     else
       the_results_baboon = "failed, jive turkey!"
-      return "failure"
+      puts "failure"
     end
     
     the_delivery_narwhal = client.notify('FSeCL0E2ZAQ3XGMMINEfHNncFYBMlP', "Your video upload #{the_results_baboon}", :priority => 1, :title => "Guess what?")
