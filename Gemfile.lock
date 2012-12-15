@@ -16,6 +16,10 @@ GEM
     activesupport (3.2.9)
       i18n (~> 0.6)
       multi_json (~> 1.0)
+    bson (1.8.0)
+      activesupport
+    bson_ext (1.8.0)
+      bson (~> 1.8.0)
     builder (3.0.4)
     httpclient (2.3.0.1)
     i18n (0.6.1)
@@ -57,6 +61,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport
+  bson_ext
   httpclient
   mongoid
   newrelic_rpm
