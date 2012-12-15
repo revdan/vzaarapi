@@ -17,7 +17,7 @@ class VzaarPushover < Sinatra::Base
   
   # config 
   if production?
-    DOMAIN = "ancient-earth-6665.herokuapp.com" 
+    DOMAIN = "powerful-crag-3167.herokuapp.com" 
   else
     DOMAIN = "localhost:9292"
   end
