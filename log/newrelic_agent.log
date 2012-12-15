@@ -29,3 +29,8 @@
 [12/15/12 10:30:56 +0000 dan-rees-joness-imac-2.local (47587)] WARN : No license key found in newrelic.yml config.
 [12/15/12 10:30:56 +0000 dan-rees-joness-imac-2.local (47587)] INFO : New Relic Ruby Agent 3.5.3 Initialized: pid = 47587
 [12/15/12 10:30:56 +0000 dan-rees-joness-imac-2.local (47587)] INFO : Agent Log at /Users/revdan/dev/pushover/ancient-earth-6665/log/newrelic_agent.log
+[12/15/12 11:21:59 +0000 dan-rees-joness-imac-2.local (48449)] INFO : Dispatcher: sinatra
+[12/15/12 11:21:59 +0000 dan-rees-joness-imac-2.local (48449)] INFO : Application: development
+[12/15/12 11:21:59 +0000 dan-rees-joness-imac-2.local (48449)] WARN : No license key found in newrelic.yml config.
+[12/15/12 11:21:59 +0000 dan-rees-joness-imac-2.local (48449)] INFO : New Relic Ruby Agent 3.5.3 Initialized: pid = 48449
+[12/15/12 11:21:59 +0000 dan-rees-joness-imac-2.local (48449)] INFO : Agent Log at /Users/revdan/dev/pushover/ancient-earth-6665/log/newrelic_agent.log

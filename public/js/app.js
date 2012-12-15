@@ -1,6 +1,6 @@
 jQuery(function($) {
 		
-	$('input[type=file]').change(function(e){
+	$('input[type=file]').on('change', function(e){
 		
 		$('#submit').removeAttr('disabled');
 		
@@ -9,6 +9,11 @@ jQuery(function($) {
 		
 		//var vid = getUrlVars()["video"];
 		//var timer = checkStatus(vid);
+	});
+	
+	$('#submit').on('click', function(e){
+		$('#submit').fadeOut('medium');
+		$('#upload_label').html('Uploading <img src="/img/spinner.gif"');
 	});
 });
 
