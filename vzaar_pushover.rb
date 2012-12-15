@@ -15,7 +15,7 @@ class VzaarPushover < Sinatra::Base
     end
   end
   
-  DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/recall.db")
+  DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/videos.db")
   class Video
     include DataMapper::Resource
     property :id, Serial
@@ -44,8 +44,8 @@ class VzaarPushover < Sinatra::Base
   end
   
   get '/db?' do
-    @videos = Video.all :.order => :id.desc 
-    erb :db
+    @videos = Video.all :order => :id.desc 
+    slim :db
   end
   
   get '/videos/*?' do
@@ -89,15 +89,25 @@ class VzaarPushover < Sinatra::Base
   post '/upload?' do
     @this = "Upload"
     vzaar_upload = v.upload_video(params[:content]['file'][:tempfile], "api test | #{params[:content]['file'][:filename]} | #{Time.now.utc.to_s}")
+    
+    vid = Video.new  
+    vid.vzaar_id = vzaar_upload 
+    vid.created_at = Time.now  
+    vid.updated_at = Time.now  
+    vid.save  
+    
+    
     @result = "vzaar ID ##{vzaar_upload}"
     slim :upload
   end
   
   post '/thelisteningtree?' do
-    
+      
     the_inquisitive_owl = request.env["rack.input"].read
     the_xml_pony = Nokogiri::XML(the_inquisitive_owl)      
     the_upload_state_ostrich = the_xml_pony.xpath("//state").text
+    the_video_badger  = Video.get(:vzaar_id => '//id').text
+    the_video_badger.update(:complete => true)  
     
     if the_upload_state_ostrich == "ready"
       the_results_baboon = "succeeded, motherfucker!"

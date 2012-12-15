@@ -1,2 +1,24 @@
-- @videos.each do |v|
-  p#{v.vzaar_id}
+table.table.table-striped
+  thead
+    tr
+      th #
+      th vzaar_id
+      th complete
+      th created_at
+      th updated_at
+  tbody
+    - @videos.each do |v|
+      - if v.complete == false
+        tr.error
+          td #{v.id}
+          td #{v.vzaar_id}          
+          td#{v.complete}
+          td #{v.created_at}          
+          td #{v.updated_at}
+      - else 
+        tr.success
+          td #{v.id}
+          td #{v.vzaar_id}
+          td #{v.complete}
+          td #{v.created_at}
+          td #{v.updated_at}
