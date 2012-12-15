@@ -1,6 +1,7 @@
 doctype html
 html lang="en"
   head
+		- ::NewRelic::Agent.browser_timing_header rescue "" 
     meta charset="utf-8"
     title vzaar API examples
     meta content="width=device-width, initial-scale=1.0" name="viewport"
@@ -35,3 +36,4 @@ html lang="en"
       ==yield
 
     script src="//#{DOMAIN}/js/bootstrap.min.js"
+		- ::NewRelic::Agent.browser_timing_footer rescue ""
