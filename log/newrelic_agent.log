@@ -1,0 +1,6 @@
+# Logfile created on Sat Dec 15 07:39:41 +0000 2012 by logger.rb/1.2.6
+[12/15/12 07:39:41 +0000 dan-rees-joness-imac-2.local (43958)] INFO : Dispatcher: sinatra
+[12/15/12 07:39:41 +0000 dan-rees-joness-imac-2.local (43958)] INFO : Application: development
+[12/15/12 07:39:41 +0000 dan-rees-joness-imac-2.local (43958)] WARN : No license key found in newrelic.yml config.
+[12/15/12 07:39:41 +0000 dan-rees-joness-imac-2.local (43958)] INFO : New Relic Ruby Agent 3.5.3 Initialized: pid = 43958
+[12/15/12 07:39:41 +0000 dan-rees-joness-imac-2.local (43958)] INFO : Agent Log at /Users/revdan/dev/pushover/ancient-earth-6665/log/newrelic_agent.log

@@ -1,4 +1,6 @@
 class VzaarPushover < Sinatra::Base
+  
+  # vzaar API - method_missing will handle all vzaar methods available
   class VzaarInit
     attr_accessor :login, :token, :server, :vzaar
     def initialize
@@ -13,7 +15,7 @@ class VzaarPushover < Sinatra::Base
     end
   end
   
-  
+  # config 
   if production?
     DOMAIN = "ancient-earth-6665.herokuapp.com" 
   else
@@ -71,21 +73,24 @@ class VzaarPushover < Sinatra::Base
   post '/upload?' do
     @this = "Upload"
     vzaar_upload = v.upload_video(params[:content]['file'][:tempfile], "api test #{Time.now} - #{params[:content]['file'][:filename]}")
-    @result = vzaar_upload.inspect
+    @result = "vzaar ID ##{vzaar_upload}"
     slim :upload
   end
   
   post '/thelisteningtree?' do
-    theresultsowl = request.env["rack.input"].read
-    xmldoc = Nokogiri::XML(theresultsowl)
-    theuploadstatetiger = xmldoc.xpath("//state").text
-    if theuploadstatetiger == "ready"
-      theresultbaboon = "succeeded, motherfucker!"
+    the_inquisitive_owl = request.env["rack.input"].read
+    the_xml_pony = Nokogiri::XML(the_inquisitve_owl)
+    the_upload_state_ostrich = the_xml_pony.xpath("//state").text
+    
+    if the_upload_state_ostrich == "ready"
+      the_results_baboon = "succeeded, motherfucker!"
     else
-      theresultbaboon = "failed, jive turkey!"
+      the_results_baboon = "failed, jive turkey!"
     end
-    resp = client.notify('FSeCL0E2ZAQ3XGMMINEfHNncFYBMlP', "Your video upload #{theresultbaboon}", :priority => 1, :title => "Guess what?")
-    resp.ok? # => true
+    
+    the_delivery_narwhal = client.notify('FSeCL0E2ZAQ3XGMMINEfHNncFYBMlP', "Your video upload #{the_results_baboon}", :priority => 1, :title => "Guess what?")
+    the_delivery_narwhal.ok? # => true
+    
   end
   
   get '/thelisteningtree?' do
