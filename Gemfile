@@ -6,4 +6,4 @@ gem "oauth"
 gem "httpclient"
 gem "rushover"
 gem "nokogiri"
-gem 'newrelic_rpm'
+gem "newrelic_rpm"

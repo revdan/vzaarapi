@@ -10,9 +10,25 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    addressable (2.3.2)
+    excon (0.16.10)
+    heroku (2.33.5)
+      heroku-api (~> 0.3.7)
+      launchy (>= 0.3.2)
+      netrc (~> 0.7.7)
+      rest-client (~> 1.6.1)
+      rubyzip
+    heroku-api (0.3.7)
+      excon (~> 0.16.10)
     httpclient (2.3.0.1)
     json (1.7.5)
+    justonedb (1.1.1)
+      heroku (~> 2.15)
+      require_all (~> 1.2.1)
+    launchy (2.1.2)
+      addressable (~> 2.3)
     mime-types (1.19)
+    netrc (0.7.7)
     newrelic_rpm (3.5.3.25)
     nokogiri (1.5.5)
     oauth (0.3.6)
@@ -20,9 +36,11 @@ GEM
     rack (1.4.1)
     rack-protection (1.3.2)
       rack
+    require_all (1.2.1)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     ruby-hmac (0.4.0)
+    rubyzip (0.9.9)
     rushover (0.1.1)
       json
       rest-client
@@ -41,6 +59,7 @@ PLATFORMS
 
 DEPENDENCIES
   httpclient
+  justonedb
   newrelic_rpm
   nokogiri
   oauth

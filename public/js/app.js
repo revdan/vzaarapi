@@ -13,7 +13,7 @@ jQuery(function($) {
 	
 	$('#submit').on('click', function(e){
 		$('#submit').fadeOut('medium');
-		$('#upload_label').html('Uploading <img src="../img/spinner.gif" >');
+		$('#upload_label').html('Uploading <img src="img/spinner.gif" >');
 	});
 });
 
