@@ -70,6 +70,7 @@ GEM
     httpclient (2.3.0.1)
     json (1.7.5)
     json_pure (1.7.5)
+    logger (1.2.8)
     mime-types (1.19)
     multi_json (1.5.0)
     newrelic_rpm (3.5.3.25)
@@ -112,6 +113,7 @@ DEPENDENCIES
   dm-postgres-adapter
   dm-sqlite-adapter
   httpclient
+  logger
   newrelic_rpm
   nokogiri
   oauth

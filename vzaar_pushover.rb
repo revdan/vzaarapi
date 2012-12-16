@@ -1,5 +1,11 @@
 class VzaarPushover < Sinatra::Base
   
+  PROCESSING = 0
+  FAILED = 1
+  ENCODED = 2
+  
+  @logger = Logger.new(STDOUT)
+  
   # vzaar API - method_missing will handle all vzaar methods available
   class VzaarInit
     attr_accessor :login, :token, :server, :vzaar
@@ -20,7 +26,7 @@ class VzaarPushover < Sinatra::Base
     include DataMapper::Resource
     property :id, Serial
     property :vzaar_id, Integer, :required => true
-    property :complete, Boolean
+    property :complete, Integer, :default => 0
     property :created_at, DateTime
     property :updated_at, DateTime
   end
@@ -104,18 +110,25 @@ class VzaarPushover < Sinatra::Base
   post '/thelisteningtree?' do
       
     the_inquisitive_owl = request.env["rack.input"].read
-    the_xml_pony = Nokogiri::XML(the_inquisitive_owl)      
+    @logger.debug the_inquisitive_owl
+    the_xml_pony = Nokogiri::XML(the_inquisitive_owl) 
+    @logger.debug the_xml_pony     
     the_upload_state_ostrich = the_xml_pony.xpath("//state").text
+    @logger.debug the_upload_state_ostrich
     the_id_hunting_sloth = the_xml_pony.xpath("//id").text
+    @logger.debug the_id_hunting_sloth
     the_video_badger  = Video.get(:vzaar_id => the_id_hunting_sloth)
+    @logger.debug the_video_badger
     
     if the_upload_state_ostrich == "ready"
-      the_video_badger.update(:complete => true)  
+      the_video_badger.update(:complete => ENCODED)  
       the_results_baboon = "succeeded, motherfucker!"
+      @logger.debug the_results_baboon
       puts "success"
     else
-      the_video_badger.update(:complete => false)  
+      the_video_badger.update(:complete => FAILED)  
       the_results_baboon = "failed, jive turkey!"
+       @logger.debug the_results_baboon
       puts "failure"
     end
     

@@ -1,6 +1,7 @@
 require "rubygems"
 require "bundler"
 require "data_mapper"
+require "logger"
 
 Bundler.require
 

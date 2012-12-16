@@ -12,6 +12,7 @@ gem "sinatra-flash"
 gem "sinatra-redirect-with-flash"
 gem "builder"
 gem "dm-postgres-adapter"
+gem "logger"
 
 group :development, :test do
   gem "sqlite3"

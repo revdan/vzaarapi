@@ -8,14 +8,21 @@ table.table.table-striped
       th updated_at
   tbody
     - @videos.each do |v|
-      - if v.complete == false
+      - if v.complete == PROCESSING
+        tr.warning
+          td #{v.id}
+          td #{v.vzaar_id}          
+          td#{v.complete}
+          td #{v.created_at}          
+          td #{v.updated_at}
+      - elsif v.complete == FAILED
         tr.error
           td #{v.id}
           td #{v.vzaar_id}          
           td#{v.complete}
           td #{v.created_at}          
           td #{v.updated_at}
-      - else 
+      - elsif v.complete == ENCODED
         tr.success
           td #{v.id}
           td #{v.vzaar_id}
