@@ -1,8 +1,21 @@
 class VzaarPushover < Sinatra::Base
   
+  # config 
+  if production?
+    DOMAIN = "powerful-crag-3167.herokuapp.com" 
+  else
+    DOMAIN = "localhost:9292"
+  end
+  
   PROCESSING = 0
   FAILED = 1
   ENCODED = 2
+  PAGES = { :home => "//#{DOMAIN}", 
+            :upload => "//#{DOMAIN}/upload", 
+            :videos => "//#{DOMAIN}/videos",
+            :db => "//#{DOMAIN}/db",
+            :whoami => "//#{DOMAIN}/whoami"
+          }
     
   # vzaar API - method_missing will handle all vzaar methods available
   class VzaarInit
@@ -29,31 +42,25 @@ class VzaarPushover < Sinatra::Base
     property :updated_at, DateTime
   end
   DataMapper.finalize.auto_upgrade!
-  
-  # config 
-  if production?
-    DOMAIN = "powerful-crag-3167.herokuapp.com" 
-  else
-    DOMAIN = "localhost:9292"
-  end
     
   v = VzaarInit.new
   client = Rushover::Client.new('qs9jDTdWKjscFDAe5CdapqYA3aC4qn')
   
   get '/' do
-    @this = "Home"
+    @this = "home"
     @video_count = v.user_details(v.login, true).video_count
     @all = v.user_details(v.login, true)
     slim :index
   end
   
   get '/db?' do
+    @this = "db"
     @videos = Video.all :order => :id.desc 
     slim :db
   end
   
   get '/videos/*?' do
-    @this = "Videos"
+    @this = "videos"
     @page = params[:splat].first.split("/").first.to_i
     if params[:splat].first.split("/").length > 1
       @count = params[:splat].first.split("/").last.to_i
@@ -80,28 +87,29 @@ class VzaarPushover < Sinatra::Base
   end
   
   get '/whoami?' do
-    @this = "Who Am I?"
+    @this = "whoami"
     @whoami = v.whoami
     slim :whoami
   end
   
   get '/upload?' do
-    @this = "Upload"
+    @this = "upload"
     slim :upload
   end
   
   post '/upload?' do
-    @this = "Upload"
 
     vid = Video.new  
     vid.vzaar_id = v.upload_video(params[:content]['file'][:tempfile], "api test | #{params[:content]['file'][:filename]} | #{Time.now.utc.to_s}")
-    
     vid.created_at = Time.now  
     vid.updated_at = Time.now  
-    vid.save  
     
+    if vid.save  
+      @result = "vzaar video ##{vid.vzaar_id} is now processing."
+    else
+      @result = "Something went wrong :("
+    end
     
-    @result = "vzaar ID ##{vid.vzaar_id}"
     slim :upload
   end
   

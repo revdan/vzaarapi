@@ -24,16 +24,14 @@ html lang="en"
         nav.container
           .nav-collapse.collapse
             ul.nav
-              li
-                a href="//#{DOMAIN}" Home
-              li
-                a href="//#{DOMAIN}/upload" Upload
-              li
-                a href="//#{DOMAIN}/videos" Videos
-	            li
-	              a href="//#{DOMAIN}/db" Database
-              li
-                a href="//#{DOMAIN}/whoami" Who Am I?
+						  - PAGES.each do |name, url|
+								- if @this.to_s == name.to_s
+									li.active
+									  a href="#{url}" #{name}
+								- else
+									li
+										a href="#{url}" #{name}
+                
     article.container.main
       h1 vzaar API app
       ==yield
