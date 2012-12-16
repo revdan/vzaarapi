@@ -1,9 +1,17 @@
 h2 Videos
 
-ul
-	- @videos.each do |v|
-  	li #{v.title}
-
+table.table.table-striped
+  thead
+    tr
+      th vzaar_id
+      th title
+      th description
+  tbody
+		tr
+	    - @videos.each do |v|
+				td #{v.id}
+	 		  td #{v.title}
+	 		  td #{v.description}
 p 
 	- if @prev > 0
 		span 
