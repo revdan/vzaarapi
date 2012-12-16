@@ -12,20 +12,20 @@ table.table.table-striped
         tr.warning
           td #{v.id}
           td #{v.vzaar_id}          
-          td#{v.complete}
+          td Processing
           td #{v.created_at}          
           td #{v.updated_at}
       - elsif v.complete == FAILED
         tr.error
           td #{v.id}
           td #{v.vzaar_id}          
-          td#{v.complete}
+          td Failed
           td #{v.created_at}          
           td #{v.updated_at}
       - elsif v.complete == ENCODED
         tr.success
           td #{v.id}
           td #{v.vzaar_id}
-          td #{v.complete}
+          td Encoded
           td #{v.created_at}
           td #{v.updated_at}
