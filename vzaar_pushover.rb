@@ -19,8 +19,8 @@ class VzaarPushover < Sinatra::Base
   class Video
     include DataMapper::Resource
     property :id, Serial
-    property :vzaar_id, Text, :required => true
-    property :complete, Boolean, :required => true, :default => false
+    property :vzaar_id, Integer, :required => true
+    property :complete, Boolean
     property :created_at, DateTime
     property :updated_at, DateTime
   end
@@ -106,13 +106,15 @@ class VzaarPushover < Sinatra::Base
     the_inquisitive_owl = request.env["rack.input"].read
     the_xml_pony = Nokogiri::XML(the_inquisitive_owl)      
     the_upload_state_ostrich = the_xml_pony.xpath("//state").text
-    the_video_badger  = Video.get(:vzaar_id => '//id').text
-    the_video_badger.update(:complete => true)  
+    the_id_hunting_sloth = the_xml_pony.xpath("//id").text
+    the_video_badger  = Video.get(:vzaar_id => the_id_hunting_sloth)
     
     if the_upload_state_ostrich == "ready"
+      the_video_badger.update(:complete => true)  
       the_results_baboon = "succeeded, motherfucker!"
       puts "success"
     else
+      the_video_badger.update(:complete => false)  
       the_results_baboon = "failed, jive turkey!"
       puts "failure"
     end
