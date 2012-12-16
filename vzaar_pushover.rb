@@ -108,25 +108,18 @@ class VzaarPushover < Sinatra::Base
   post '/thelisteningtree?' do
       
     the_inquisitive_owl = request.env["rack.input"].read
-    puts the_inquisitive_owl
     the_xml_pony = Nokogiri::XML(the_inquisitive_owl) 
-    puts the_xml_pony     
     the_upload_state_ostrich = the_xml_pony.xpath("//state").text
-    puts the_upload_state_ostrich
     the_id_hunting_sloth = the_xml_pony.xpath("//id").text
-    puts the_id_hunting_sloth
     the_video_badger  = Video.first(:vzaar_id => the_id_hunting_sloth)
-    puts the_video_badger
     
     if the_upload_state_ostrich == "ready"
       the_video_badger.update(:complete => ENCODED)  
       the_results_baboon = "succeeded, motherfucker!"
-      puts the_results_baboon
       puts "success"
     else
       the_video_badger.update(:complete => FAILED)  
       the_results_baboon = "failed, jive turkey!"
-       puts the_results_baboon
       puts "failure"
     end
     
