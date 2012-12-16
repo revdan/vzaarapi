@@ -116,6 +116,7 @@ class VzaarPushover < Sinatra::Base
   post '/thelisteningtree?' do
       
     the_inquisitive_owl = request.env["rack.input"].read
+    puts the_inquisitive_owl
     the_xml_pony = Nokogiri::XML(the_inquisitive_owl) 
     the_upload_state_ostrich = the_xml_pony.xpath("//state").text
     the_id_hunting_sloth = the_xml_pony.xpath("//id").text
