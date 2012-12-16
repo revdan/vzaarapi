@@ -115,7 +115,7 @@ class VzaarPushover < Sinatra::Base
     puts the_upload_state_ostrich
     the_id_hunting_sloth = the_xml_pony.xpath("//id").text
     puts the_id_hunting_sloth
-    the_video_badger  = Video.get(:vzaar_id => the_id_hunting_sloth)
+    the_video_badger  = Video.first(:vzaar_id => the_id_hunting_sloth)
     puts the_video_badger
     
     if the_upload_state_ostrich == "ready"
