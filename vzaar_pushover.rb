@@ -92,16 +92,16 @@ class VzaarPushover < Sinatra::Base
   
   post '/upload?' do
     @this = "Upload"
-    vzaar_upload = v.upload_video(params[:content]['file'][:tempfile], "api test | #{params[:content]['file'][:filename]} | #{Time.now.utc.to_s}")
-    
+
     vid = Video.new  
-    vid.vzaar_id = vzaar_upload 
+    vid.vzaar_id = v.upload_video(params[:content]['file'][:tempfile], "api test | #{params[:content]['file'][:filename]} | #{Time.now.utc.to_s}")
+    
     vid.created_at = Time.now  
     vid.updated_at = Time.now  
     vid.save  
     
     
-    @result = "vzaar ID ##{vzaar_upload}"
+    @result = "vzaar ID ##{vid.vzaar_id}"
     slim :upload
   end
   
