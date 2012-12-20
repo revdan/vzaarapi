@@ -299,3 +299,18 @@
 [12/17/12 14:58:49 +0000 dan-rees-joness-imac-2.local (79478)] WARN : No license key found in newrelic.yml config.
 [12/17/12 14:58:49 +0000 dan-rees-joness-imac-2.local (79478)] INFO : New Relic Ruby Agent 3.5.3 Initialized: pid = 79478
 [12/17/12 14:58:49 +0000 dan-rees-joness-imac-2.local (79478)] INFO : Agent Log at /Users/revdan/dev/pushover/ancient-earth-6665/log/newrelic_agent.log
+[12/20/12 09:58:40 +0000 Dan.local (68691)] INFO : Dispatcher: sinatra
+[12/20/12 09:58:40 +0000 Dan.local (68691)] INFO : Application: development
+[12/20/12 09:58:40 +0000 Dan.local (68691)] WARN : No license key found in newrelic.yml config.
+[12/20/12 09:58:40 +0000 Dan.local (68691)] INFO : New Relic Ruby Agent 3.5.3 Initialized: pid = 68691
+[12/20/12 09:58:40 +0000 Dan.local (68691)] INFO : Agent Log at /Users/Dan/Development/pushover/log/newrelic_agent.log
+[12/20/12 09:58:51 +0000 Dan.local (68784)] INFO : Dispatcher: sinatra
+[12/20/12 09:58:51 +0000 Dan.local (68784)] INFO : Application: development
+[12/20/12 09:58:51 +0000 Dan.local (68784)] WARN : No license key found in newrelic.yml config.
+[12/20/12 09:58:51 +0000 Dan.local (68784)] INFO : New Relic Ruby Agent 3.5.3 Initialized: pid = 68784
+[12/20/12 09:58:51 +0000 Dan.local (68784)] INFO : Agent Log at /Users/Dan/Development/pushover/log/newrelic_agent.log
+[12/20/12 09:59:04 +0000 Dan.local (68885)] INFO : Dispatcher: sinatra
+[12/20/12 09:59:04 +0000 Dan.local (68885)] INFO : Application: development
+[12/20/12 09:59:04 +0000 Dan.local (68885)] WARN : No license key found in newrelic.yml config.
+[12/20/12 09:59:04 +0000 Dan.local (68885)] INFO : New Relic Ruby Agent 3.5.3 Initialized: pid = 68885
+[12/20/12 09:59:04 +0000 Dan.local (68885)] INFO : Agent Log at /Users/Dan/Development/pushover/log/newrelic_agent.log

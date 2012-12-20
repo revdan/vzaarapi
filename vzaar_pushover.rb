@@ -159,7 +159,7 @@ class VzaarPushover < Sinatra::Base
   end
   
   def send_push(token, message, priority, title)
-    client.notify(token, message, :priority => priority, :title = title)
+    client.notify(token, message, :priority => priority, :title => title)
   end
   
   def calculate_height (w, h, nw)
