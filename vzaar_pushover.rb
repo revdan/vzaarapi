@@ -153,7 +153,7 @@ class VzaarPushover < Sinatra::Base
       puts "failure"
     end
     
-    the_delivery_narwhal = send_push(PUSHOVER_TOKEN, "Your video upload #{the_results_baboon}", :priority => 1, :title => "Guess what?")
+    the_delivery_narwhal = send_push(PUSHOVER_TOKEN, "Your video upload #{the_results_baboon}", 1, "Guess what?")
     the_delivery_narwhal.ok? # => true
     
   end
