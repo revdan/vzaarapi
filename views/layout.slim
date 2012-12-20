@@ -22,14 +22,14 @@ html lang="en"
     header.navbar.navbar-inverse.navbar-fixed-top
       .navbar-inner
         nav.container-fluid
-            ul.nav
-						  - PAGES.each do |name, url|
-								- if @this.to_s == name.to_s
-									li.active
-									  a href="#{url}" #{name}
-								- else
-									li
-										a href="#{url}" #{name}
+          ul.nav
+						- PAGES.each do |name, url|
+							- if @this.to_s == name.to_s
+								li.active
+									a href="#{url}" #{name}
+							- else
+								li
+									a href="#{url}" #{name}
                 
     article.container-fluid.main
       h1 vzaar API app
