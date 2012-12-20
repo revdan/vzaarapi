@@ -2,7 +2,7 @@ class VzaarPushover < Sinatra::Base
   
   # config 
   if production?
-    DOMAIN = "powerful-crag-3167.herokuapp.com" 
+    DOMAIN = "whatever.herokuapp.com" 
   else
     DOMAIN = "localhost:9292"
   end
@@ -10,7 +10,7 @@ class VzaarPushover < Sinatra::Base
   PROCESSING = 0
   FAILED = 1
   ENCODED = 2
-  PUSHOVER_TOKEN = 'FSeCL0E2ZAQ3XGMMINEfHNncFYBMlP'
+  PUSHOVER_TOKEN = 'replace me'
   
   PAGES = { :home => "//#{DOMAIN}", 
             :upload => "//#{DOMAIN}/upload", 
@@ -35,8 +35,8 @@ class VzaarPushover < Sinatra::Base
   class VzaarInit
     attr_accessor :login, :token, :server, :vzaar
     def initialize
-      @login = 'dan7890'
-      @token = 'SxPoczFQFfZMVSvCrM9IiSnZaCYrWFPBxzyszDEu10I' 
+      @login = '??'
+      @token = '??' 
       @server = 'vzaar.com'
       @vzaar = Vzaar::Base.new :login => login, :application_token => token, :server => server
     end
