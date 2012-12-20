@@ -1,0 +1,8 @@
+h2 #{@title}
+.row-fluid
+	div.span7
+		<iframe allowfullscreen="" allowtransparency="true" class="vzaar-video-player" frameborder="0" height="#{@height}" id="vzvd-#{@video_id}" mozallowfullscreen="" name="vzvd-#{@video_id}" src="http://view.vzaar.com/#{@video_id}/player" title="vzaar video player" type="text/html" webkitallowfullscreen="" width="#{@width}"></iframe>
+	div.span5
+		h4 Description
+		== @description
+		== @play_count

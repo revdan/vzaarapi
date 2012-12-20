@@ -91,16 +91,9 @@ class VzaarPushover < Sinatra::Base
     @video_id = params[:id]
     @video = v.video_details(@video_id, true)
     @embed = @video.html
-    @description = @video.inspect
+    @description = @video.description
     @title = @video.title
     @play_count = @video.play_count
-    @width = @video.width
-    @height = @video.height
-    if @width.to_i > 768
-      @height = calculate_height(@width, @height, 768)
-      @width = 768
-    end
-      
     slim :video
     
   end
@@ -154,11 +147,6 @@ class VzaarPushover < Sinatra::Base
     the_delivery_narwhal = client.notify('FSeCL0E2ZAQ3XGMMINEfHNncFYBMlP', "Your video upload #{the_results_baboon}", :priority => 1, :title => "Guess what?")
     the_delivery_narwhal.ok? # => true
     
-  end
-  
-  def calculate_height (w, h, nw)
-    result = (h.to_f / w.to_f) * nw.to_f
-    return result.to_i
   end
   
 end
