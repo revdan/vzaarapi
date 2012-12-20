@@ -10,12 +10,26 @@ class VzaarPushover < Sinatra::Base
   PROCESSING = 0
   FAILED = 1
   ENCODED = 2
+  PUSHOVER_TOKEN = 'FSeCL0E2ZAQ3XGMMINEfHNncFYBMlP'
+  
   PAGES = { :home => "//#{DOMAIN}", 
             :upload => "//#{DOMAIN}/upload", 
             :videos => "//#{DOMAIN}/videos",
             :db => "//#{DOMAIN}/db",
             :whoami => "//#{DOMAIN}/whoami"
           }
+  
+  # db stuff
+  DataMapper.setup(:default, ENV['HEROKU_POSTGRESQL_RED_URL'] || "sqlite3://#{Dir.pwd}/videos.db")
+  class Video
+    include DataMapper::Resource
+    property :id, Serial
+    property :vzaar_id, Integer, :required => true
+    property :complete, Integer, :default => 0
+    property :created_at, DateTime
+    property :updated_at, DateTime
+  end
+  DataMapper.finalize.auto_upgrade!
     
   # vzaar API - method_missing will handle all vzaar methods available
   class VzaarInit
@@ -32,17 +46,6 @@ class VzaarPushover < Sinatra::Base
     end
   end
   
-  DataMapper.setup(:default, ENV['HEROKU_POSTGRESQL_RED_URL'] || "sqlite3://#{Dir.pwd}/videos.db")
-  class Video
-    include DataMapper::Resource
-    property :id, Serial
-    property :vzaar_id, Integer, :required => true
-    property :complete, Integer, :default => 0
-    property :created_at, DateTime
-    property :updated_at, DateTime
-  end
-  DataMapper.finalize.auto_upgrade!
-    
   v = VzaarInit.new
   client = Rushover::Client.new('qs9jDTdWKjscFDAe5CdapqYA3aC4qn')
   
@@ -135,7 +138,6 @@ class VzaarPushover < Sinatra::Base
   post '/thelisteningtree?' do
       
     the_inquisitive_owl = request.env["rack.input"].read
-    puts the_inquisitive_owl
     the_xml_pony = Nokogiri::XML(the_inquisitive_owl) 
     the_upload_state_ostrich = the_xml_pony.xpath("//state").text
     the_id_hunting_sloth = the_xml_pony.xpath("//id").text
@@ -151,9 +153,13 @@ class VzaarPushover < Sinatra::Base
       puts "failure"
     end
     
-    the_delivery_narwhal = client.notify('FSeCL0E2ZAQ3XGMMINEfHNncFYBMlP', "Your video upload #{the_results_baboon}", :priority => 1, :title => "Guess what?")
+    the_delivery_narwhal = send_push(PUSHOVER_TOKEN, "Your video upload #{the_results_baboon}", :priority => 1, :title => "Guess what?")
     the_delivery_narwhal.ok? # => true
     
+  end
+  
+  def send_push(token, message, priority, title)
+    client.notify(token, message, :priority => priority, :title = title)
   end
   
   def calculate_height (w, h, nw)
