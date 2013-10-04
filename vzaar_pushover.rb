@@ -10,8 +10,8 @@ class VzaarPushover < Sinatra::Base
   PROCESSING = 0
   FAILED = 1
   ENCODED = 2
-  PUSHOVER_TOKEN = 'FSeCL0E2ZAQ3XGMMINEfHNncFYBMlP'
-  PUSHOVER_DEVICE = 'qs9jDTdWKjscFDAe5CdapqYA3aC4qn'
+  PUSHOVER_TOKEN = 'CHANGEME'
+  PUSHOVER_DEVICE = 'CHANGEME'
   
   PAGES = { :home => "//#{DOMAIN}", 
             :upload => "//#{DOMAIN}/upload", 
