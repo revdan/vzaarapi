@@ -36,8 +36,8 @@ class VzaarPushover < Sinatra::Base
   class VzaarInit
     attr_accessor :login, :token, :server, :vzaar
     def initialize
-      @login = 'dan7890'
-      @token = 'SxPoczFQFfZMVSvCrM9IiSnZaCYrWFPBxzyszDEu10I' 
+      @login = 'CHANGEME'
+      @token = 'CHANGEME' 
       @server = 'vzaar.com'
       @vzaar = Vzaar::Base.new :login => login, :application_token => token, :server => server
     end
